@@ -1,0 +1,61 @@
+tcpsvd 0 ftp ftpd -w &
+
+enp0s20f6:avahi Link encap:Ethernet  HWaddr 98:4F:EE:05:46:39
+          inet addr:169.254.5.112  Bcast:169.254.255.255  Mask:255.255.0.0
+
+
+192.168.1.76
+192.168.1.72
+mask
+255.255.255.0
+
+escritorio
+192.168.1.70
+
+gateway
+192.168.1.254
+
+root@galileo:~# /sbin/ifconfig -a
+enp0s20f6 Link encap:Ethernet  HWaddr 98:4F:EE:05:46:39
+          inet addr:192.168.1.76  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fe80::9a4f:eeff:fe05:4639/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1251 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:332 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:87760 (85.7 KiB)  TX bytes:37263 (36.3 KiB)
+          Interrupt:49
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:164 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:164 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:14852 (14.5 KiB)  TX bytes:14852 (14.5 KiB)
+
+
+
+enp0s20f6 Link encap:Ethernet  HWaddr 98:4F:EE:05:46:39
+          inet6 addr: fe80::9a4f:eeff:fe05:4639/64 Scope:Link
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:5 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 B)  TX bytes:370 (370.0 B)
+          Interrupt:50
+
+enp0s20f6:avahi Link encap:Ethernet  HWaddr 98:4F:EE:05:46:39
+          inet addr:169.254.5.112  Bcast:169.254.255.255  Mask:255.255.0.0
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          Interrupt:50
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:1120 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1120 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:83680 (81.7 KiB)  TX bytes:83680 (81.7 KiB)

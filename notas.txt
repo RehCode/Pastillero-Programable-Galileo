@@ -1,0 +1,6 @@
+porcentajes angulos
+0.04
+0.14
+
+formula
+y = ((angulo/18)+4)/100
