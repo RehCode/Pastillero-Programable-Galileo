@@ -3,12 +3,12 @@
 <form action="/leds" method="POST">
     <p>
         <label for="rojo">Rojo</label>
-        <input class="inDigitos" type="number" name="rojoSeg" id="rojo" min="1" max="60" value="{{seg_rojo}}" required>
+        <input class="inDigitos" type="number" name="rojoSeg" id="rojo" min="1" max="60" value="{{rojo_seg}}" required>
         segundos
     </p>
     <p>
         <label for="verde">Verde</label>
-        <input class="inDigitos" type="number" name="verdeSeg" id="verde" min="1" max="60" value="{{seg_verde}}" required>
+        <input class="inDigitos" type="number" name="verdeSeg" id="verde" min="1" max="60" value="{{verde_seg}}" required>
         segundos
     </p>
     <p>
@@ -27,10 +27,10 @@
                 </select>
             </li>
             <li>
-                Hora: <input class="inDigitos" type="number" name="amarilloHora" min="1" max="23" value="{{hora_amarillo}}" required>
+                Hora: <input class="inDigitos" type="number" name="amarilloHora" min="1" max="23" value="{{amarillo_hora}}" required>
             </li>
             <li>
-                Minuto: <input class="inDigitos" type="number" name="amarilloMin" min="1" max="60" value="{{min_amarillo}}" required>
+                Minuto: <input class="inDigitos" type="number" name="amarilloMin" min="1" max="60" value="{{amarillo_min}}" required>
             </li>
         </ul>
     </p>
