@@ -1,0 +1,57 @@
+/* Encabezado */
+header h3 {
+  font-size: 2em;
+  text-align: center;
+  font-family: Helvetica;
+}
+
+/* Menu navegacion */
+nav {
+/*   border: 2px solid #ccc; */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+nav ul {
+  list-style-type: none;
+  background-color: #333;
+}
+
+nav li {
+  display: inline;
+}
+
+nav li a {
+  text-align: center;
+  color: black;
+  padding: 12px;
+  text-decoration: none;
+  background-color: #eee;
+/*   display: inline-block; */
+}
+
+nav li a:hover {
+  background-color: #ffbc14;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Contenido */
+section {
+  text-align: center;
+  font-family: "Courier New";
+}
+
+/* Pie de pagina */
+footer {
+  font-style: italic;
+  text-align: center;
+  border-top: solid 1px;
+  margin: 20px;
+  padding-top: 5px;
+}
+
+/* Inputs */
+.inDigitos {
+  width: 3em;
+}
