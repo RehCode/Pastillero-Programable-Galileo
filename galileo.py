@@ -1,7 +1,4 @@
 import mraa
-import time
-import threading
-
 
 class Servo():
     MAXIMO = 0.14
@@ -42,24 +39,3 @@ class Led():
         self.gpio.write(0)
         self.on = False
         print("pin {} apagado".format(self.pin))
-
-# configuracion leds
-verde = Led(13, 3)
-rojo = Led(12, 4)
-amarillo = Led(11, 1)
-
-def hilo_led(led):
-    while True:
-        if led.encendido():
-            led.apagar()
-        else:
-            led.ecender()
-        time.sleep(led.duracion)
-
-if __name__ == '__main__':
-    tv = threading.Thread(target=hilo_led, args=(verde, ), daemon=True)
-    tv.start()
-    tv = threading.Thread(target=hilo_led, args=(rojo, ), daemon=True)
-    tv.start()
-    tv = threading.Thread(target=hilo_led, args=(amarillo, ), daemon=True)
-    tv.start()

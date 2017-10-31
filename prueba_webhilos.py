@@ -1,4 +1,4 @@
-import threading, time, logging, sys
+import threading, time, logging
 from datetime import datetime
 from bottle import route, run, template, request, redirect, static_file
 from galileo import Led, Servo
@@ -7,6 +7,8 @@ logging.basicConfig(level=logging.DEBUG)
 logging.debug("A debug message!")
 
 datos_leds = {"rojo_seg": 13, "verde_seg": 17, "amarillo_min":22, "amarillo_hora":14, "dia": "lunes", "cambio":False}
+
+servo = Servo(6)
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
@@ -24,6 +26,7 @@ def angulos():
 def angulos_post():
     angulo = int(request.forms.get('angulo'))
     logging.debug(angulo)
+    servo.girar(angulo)
     return template('views/angulos.tpl', angulo=angulo)
 
 @route('/leds')
