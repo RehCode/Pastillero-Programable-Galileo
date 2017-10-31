@@ -8,7 +8,7 @@ logging.debug("A debug message!")
 
 datos_leds = {"rojo_seg": 13, "verde_seg": 17, "amarillo_min":22, "amarillo_hora":14, "dia": "lunes", "cambio":False}
 
-servo = Servo(6)
+servo = Servo(9)
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
@@ -16,7 +16,7 @@ def server_static(filepath):
 
 @route('/')
 def raiz():
-    return template('views/home.tpl')
+    return template('views/home.tpl', fecha=datetime.now().ctime())
 
 @route('/angulos')
 def angulos():
@@ -126,7 +126,7 @@ def hilo_fecha(amarillo):
                 if ahora.minute == datos_leds["amarillo_min"] and not dispensado:
                     print("Dispensando medicina...")
                     amarillo.encender()
-                    time.sleep(1)
+                    time.sleep(4)
                     amarillo.apagar()
                     dispensado = True
         
@@ -135,6 +135,11 @@ def hilo_fecha(amarillo):
 
 
 if __name__ == '__main__':
+    # python 2.7
+    # t = threading.Thread(name='hilo_fecha', target=hilo)
+    # t.setDaemon(True)
+    # t.start()
+
     tv = threading.Thread(target=hilo_led, args=(verde, ), daemon=True)
     tv.start()
     tr = threading.Thread(target=hilo_led, args=(rojo, ), daemon=True)

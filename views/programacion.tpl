@@ -1,4 +1,4 @@
-% rebase('base.tpl')
+% rebase('base.tpl', title='Programacion recipientes')
 <h2>Programacion de recipientes</h2>
 <ul>
     <li>#1</li>

@@ -1,4 +1,4 @@
-% rebase('base.tpl')
+% rebase('base.tpl', title='Login')
 <form action="/login" method="POST">
     <label for="usaurio">Usuario</label>
     <input type="text" id="usuario" name="usuario">

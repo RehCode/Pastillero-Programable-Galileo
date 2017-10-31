@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href='../static/css/base.css' rel='stylesheet' type='text/css'>
-    <title>Pruebas para el Dispensador programable</title>
+    <title>{{title or 'Pruebas'}}</title>
 </head>
 <body>
     <header>

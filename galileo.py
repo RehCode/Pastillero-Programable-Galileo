@@ -14,8 +14,8 @@ class Servo():
             angulo = 0
         if angulo >= 180:
             angulo = 180
-        
-        duty = ((angulo/18)+4)/100
+
+        duty = ((angulo/18)+4)/100.0
         self.gpio.write(duty)
 
 

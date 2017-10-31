@@ -1,4 +1,4 @@
-% rebase('base.tpl')
+% rebase('base.tpl', title='Angulos')
 <h1>Angulos servomotor</h1>
 <form action="/angulos" method="POST">
     % for i in range(0, 190, 30):

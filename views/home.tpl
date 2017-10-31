@@ -1,2 +1,3 @@
-% rebase('base.tpl')
-<h1>Hello Home!</h1>
+% rebase('base.tpl', title="Dispensador programable pruebas")
+<h1>Inicio</h1>
+<p>{{fecha}}</p>

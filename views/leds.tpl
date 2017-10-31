@@ -1,4 +1,4 @@
-% rebase('base.tpl')
+% rebase('base.tpl', title='Programacion de leds')
 <h1>Programación temporal leds</h1>
 <form action="/leds" method="POST">
     <p>
