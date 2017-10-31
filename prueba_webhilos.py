@@ -135,15 +135,28 @@ def hilo_fecha(amarillo):
 
 
 if __name__ == '__main__':
+    import sys
+    if sys.version_info[0] > 2:
+        tv = threading.Thread(target=hilo_led, args=(verde, ), daemon=True)
+        tv.start()
+        tr = threading.Thread(target=hilo_led, args=(rojo, ), daemon=True)
+        tr.start()
+        ta = threading.Thread(target=hilo_fecha, args=(amarillo, ), daemon=True)
+        ta.start()
+    else:
+        tv = threading.Thread(target=hilo_led, args=(verde, ), daemon=True)
+        tv.setDaemon(True)
+        tv.start()
+        tr = threading.Thread(target=hilo_led, args=(rojo, ), daemon=True)
+        tv.setDaemon(True)
+        tr.start()
+        ta = threading.Thread(target=hilo_fecha, args=(amarillo, ), daemon=True)
+        tv.setDaemon(True)
+        ta.start()
+        
     # python 2.7
     # t = threading.Thread(name='hilo_fecha', target=hilo)
     # t.setDaemon(True)
     # t.start()
 
-    tv = threading.Thread(target=hilo_led, args=(verde, ), daemon=True)
-    tv.start()
-    tr = threading.Thread(target=hilo_led, args=(rojo, ), daemon=True)
-    tr.start()
-    tr = threading.Thread(target=hilo_fecha, args=(amarillo, ), daemon=True)
-    tr.start()    
     run(host='0.0.0.0', port=8080, debug=True)
