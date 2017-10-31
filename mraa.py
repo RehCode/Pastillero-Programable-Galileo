@@ -19,18 +19,18 @@ class Gpio(object):
 
     def write(self, value):
         pass
-    
+
 
 class Pwm(object):
     def __init__(self, pin):
         self.pin = pin
-    
+
     def enable(self, enable):
         pass
-    
+
     def period(self, period):
         pass
-    
+
     def period_ms(self, ms):
         pass
 
@@ -39,8 +39,8 @@ class Pwm(object):
 
 
 class Aio(object):
-    def __init__(self, pin);
+    def __init__(self, pin):
         self.pin = pin
-    
+
     def read(self):
         pass
