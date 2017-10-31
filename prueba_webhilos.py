@@ -1,9 +1,12 @@
-import threading, time
+import threading, time, logging, sys
 from datetime import datetime
 from bottle import route, run, template, request, redirect, static_file
+from galileo import Led, Servo
 
-datos_leds = {"rojo_seg": 5, "verde_seg": 7, "amarillo_min":22, "amarillo_hora":14, "dia": "lunes", "cambio":False}
+logging.basicConfig(level=logging.DEBUG)
+logging.debug("A debug message!")
 
+datos_leds = {"rojo_seg": 13, "verde_seg": 17, "amarillo_min":22, "amarillo_hora":14, "dia": "lunes", "cambio":False}
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
@@ -15,11 +18,13 @@ def raiz():
 
 @route('/angulos')
 def angulos():
-    return template('views/angulos.tpl')
+    return template('views/angulos.tpl', angulo=0)
 
 @route('/angulos', method='POST')
 def angulos_post():
-    redirect('/angulos')
+    angulo = int(request.forms.get('angulo'))
+    logging.debug(angulo)
+    return template('views/angulos.tpl', angulo=angulo)
 
 @route('/leds')
 def leds():
@@ -84,23 +89,6 @@ def do_login():
         return template('views/login.tpl', ok_login=False)
 
 
-class Led():
-    def __init__(self, pin, nombre):
-        self.pin = pin
-        self.on = False
-        self.nombre = nombre
-
-    def encendido(self):
-        return self.on
-    
-    def encender(self):
-        print("pin {} encendido".format(self.pin))
-        self.on = True
-    
-    def apagar(self):
-        print("pin {} apagado".format(self.pin))
-        self.on = False
-
 verde = Led(13, 'verde')
 rojo = Led(12, 'rojo')
 amarillo = Led(11, 'amarillo')
@@ -140,7 +128,7 @@ def hilo_fecha(amarillo):
                     dispensado = True
         
         time.sleep(5)
-        print(datos_leds)
+        # logging.debug(datos_leds)
 
 
 if __name__ == '__main__':

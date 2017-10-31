@@ -3,17 +3,14 @@ import time
 import threading
 
 
-servo_pin = 6
-boton_pin = 8
-sensor_pin = a0
-
 class Servo():
     MAXIMO = 0.14
     MINIMO = 0.04
-    def __init__(self, pin):
+    def __init__(self, pin, nombre='uno'):
         self.gpio = mraa.Pwm(pin)
         self.gpio.period_ms(20)
         self.gpio.enable(True)
+        self.nombre = nombre
     
     def girar(self, angulo):
         if angulo <= 0:
@@ -26,11 +23,12 @@ class Servo():
 
 
 class Led():
-    def __init__(self, pin, duracion):
+    def __init__(self, pin, nombre):
         self.gpio = mraa.Gpio(pin)
         self.gpio.dir(mraa.DIR_OUT)
         self.on = False
-        self.dormir = duracion
+        self.nombre = nombre
+        self.pin = pin
 
     def encendido(self):
         return self.on
@@ -38,10 +36,12 @@ class Led():
     def encender(self):
         self.gpio.write(1)
         self.on = True
+        print("pin {} encendido".format(self.pin))
     
     def apagar(self):
         self.gpio.write(0)
         self.on = False
+        print("pin {} apagado".format(self.pin))
 
 # configuracion leds
 verde = Led(13, 3)
