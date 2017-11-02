@@ -20,6 +20,9 @@ class Gpio(object):
     def write(self, value):
         pass
 
+    def mode(self, mode):
+        pass
+
 
 class Pwm(object):
     def __init__(self, pin):
