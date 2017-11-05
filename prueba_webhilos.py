@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.DEBUG)
 logging.debug("A debug message!")
 
 datos_leds = {"rojo_seg": 13, "verde_seg": 17, "amarillo_min":22, "amarillo_hora":14, "dia": "lunes", "cambio":False}
-
+datos_sensor = {'sensor_limite': 70}
 servo = Servo(9)
 
 @route('/static/<filepath:path>')
@@ -15,9 +15,65 @@ def server_static(filepath):
     return static_file(filepath, root='static/')
 
 @route('/')
+@route('/home')
 def raiz():
     return template('views/home.tpl', fecha=datetime.now().ctime())
 
+@route('/comentarios_vista')
+def ver_comentarios():
+    return template('comentarios_vista.tpl')
+
+@route('/comentarios_ingreso')
+def ingresar_comentarios():
+    return template('comentarios_ingreso.tpl')
+
+@route('/com_cont', method='POST')
+def ingresar_comentarios():
+    return template('comentarios_ingreso.tpl')
+
+@route('/com_trat', method='POST')
+def ingresar_comentarios():
+    return template('comentarios_ingreso.tpl')
+
+# --- contenedor 1
+datos_cont = {'cont1_dia': 'martes', 'cont1_hora': 14, 'cont1_min': 13}
+@route('/cont1')
+def cont1():
+    return template('cont1.tpl', **datos_cont)
+
+@route('/cont1', method='POST')
+def cont1_prog():
+    return template('cont1.tpl', **datos_cont)
+
+
+@route('/fecha')
+def fecha():
+    return datetime.now().ctime()
+
+
+@route('/login')
+def forma():
+    return template('views/login.tpl', ok_login=True)
+
+
+def check_login(username, password):
+    if username == 'rene' and password == '123':
+        return True
+    else:
+        return False
+
+
+@route('/login', method='POST')
+def do_login():
+    usuario = request.forms.get('usuario')
+    password = request.forms.get('password')
+    if check_login(usuario, password):
+        return template('views/programacion.tpl')
+    else:
+        return template('views/login.tpl', ok_login=False)
+
+
+# test de sensores y mockup
 @route('/angulos')
 def angulos():
     return template('views/angulos.tpl', angulo=0)
@@ -63,34 +119,14 @@ def leds_post():
 
 @route('/sensor')
 def sensor():
-    return template('views/sensor.tpl')
+    return template('views/sensor.tpl', **datos_sensor)
 
-@route('/fecha')
-def fecha():
-    return datetime.now().ctime()
-
-
-@route('/login')
-def forma():
-    return template('views/login.tpl', ok_login=True)
-
-
-def check_login(username, password):
-    if username == 'rene' and password == '123':
-        return True
-    else:
-        return False
-
-
-@route('/login', method='POST')
-def do_login():
-    usuario = request.forms.get('usuario')
-    password = request.forms.get('password')
-    if check_login(usuario, password):
-        return template('views/programacion.tpl')
-    else:
-        return template('views/login.tpl', ok_login=False)
-
+@route('/sensor', method='POST')
+def sensor_set():
+    global datos_sensor
+    sensorLimite = int(request.forms.get('limiteLuz'))
+    datos_sensor['sensor_limite'] = sensorLimite
+    return template('views/sensor.tpl', **datos_sensor)
 
 verde = Led(13, 'verde')
 rojo = Led(12, 'rojo')

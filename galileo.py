@@ -33,9 +33,7 @@ class Led():
     def encender(self):
         self.gpio.write(1)
         self.on = True
-        print("pin {} encendido".format(self.pin))
     
     def apagar(self):
         self.gpio.write(0)
         self.on = False
-        print("pin {} apagado".format(self.pin))

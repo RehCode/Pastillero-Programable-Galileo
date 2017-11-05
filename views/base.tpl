@@ -18,6 +18,7 @@
             <li><a href="/leds">Programacion leds</a></li>
             <li><a href="/sensor">Sensor</a></li>
             <li><a href="/login">Login</a></li>
+            <li><a href="/comentarios_ingreso">Comentarios</a></li>
         </ul>
     </nav>
     <section>
