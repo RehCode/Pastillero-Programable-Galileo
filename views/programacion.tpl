@@ -8,7 +8,7 @@
 </ul>
 <h2>Programación del sensor de pastillas</h2>
 <ul>
-    <li><a href="/sensor">Sensor #1</a></li>
+    <li><a href="/sensor1">Sensor #1</a></li>
     <li>Sensor #2</li>
     <li>Sensor #3</li>
     <li>Sensor #4</li>

@@ -16,7 +16,7 @@
             <li><a href="/">Inicio</a></li>
             <li><a href="/angulos">Angulos servo</a></li>
             <li><a href="/leds">Programacion leds</a></li>
-            <li><a href="/sensor">Sensor</a></li>
+            <li><a href="/sensor1">Sensor</a></li>
             <li><a href="/login">Login</a></li>
             <li><a href="/comentarios_ingreso">Comentarios</a></li>
         </ul>
@@ -27,7 +27,9 @@
 
     </section>
     <footer>
-        sensores y esqueleto pagina
+        % from datetime import datetime
+        <p>{{datetime.now().ctime()}}</p>
+        <p>Prueba - Sensor, actuador y paginas</p>
     </footer>
 </body>
 </html>

@@ -10,6 +10,18 @@ datos_leds = {"rojo_seg": 13, "verde_seg": 17, "amarillo_min":22, "amarillo_hora
 datos_sensor = {'sensor_limite': 70}
 servo = Servo(9)
 
+cont1_nombre = 'Aaspirina'
+cont1_secciones = {
+            'secc1': {'dia': 'lunes', 'hora': 14, 'minuto': 00},
+            'secc2': {'dia': 'lunes', 'hora': 14, 'minuto': 00},
+            'secc3': {'dia': 'lunes', 'hora': 14, 'minuto': 00},
+            'secc4': {'dia': 'lunes', 'hora': 14, 'minuto': 00},
+            'secc5': {'dia': 'lunes', 'hora': 14, 'minuto': 00},
+            'secc6': {'dia': 'lunes', 'hora': 14, 'minuto': 00},
+            }
+
+datos_cont = {'cont1_dia': 'martes', 'cont1_hora': 22, 'cont1_min': 30}
+
 @route('/static/<filepath:path>')
 def server_static(filepath):
     return static_file(filepath, root='static/')
@@ -37,14 +49,23 @@ def ingresar_comentarios():
     return template('comentarios_ingreso.tpl')
 
 # --- contenedor 1
-datos_cont = {'cont1_dia': 'martes', 'cont1_hora': 22, 'cont1_min': 30}
 @route('/cont1')
 def cont1():
-    return template('cont1.tpl', **datos_cont)
+    return template('cont1.tpl', cont1_secciones=cont1_secciones, cont1_nombre=cont1_nombre)
 
 @route('/cont1', method='POST')
 def cont1_prog():
-    return template('cont1.tpl', **datos_cont)
+    
+    for seccion in list(cont1_secciones.keys()):
+        for parametro in ['dia', 'hora', 'minuto']:
+            if parametro == 'dia':
+                cont1_secciones[seccion][parametro] = request.forms.get(seccion + 'Dia')
+            if parametro == 'hora':
+                cont1_secciones[seccion][parametro] = request.forms.get(seccion + 'Hora')
+            if parametro == 'minuto':
+                cont1_secciones[seccion][parametro] = request.forms.get(seccion + 'Min')   
+    cont1_nombre = request.forms.get('nombre')
+    return template('cont1.tpl', cont1_secciones=cont1_secciones, cont1_nombre=cont1_nombre)
 
 
 # --- sensor 1
