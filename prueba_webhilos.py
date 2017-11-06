@@ -1,11 +1,18 @@
 import threading, time
 from datetime import datetime
 from bottle import route, run, template, request, redirect, static_file
-from galileo import Led, Servo
+from galileo import Led, Servo, Adc
 
 datos_leds = {"rojo_seg": 13, "verde_seg": 17, "amarillo_min":22, "amarillo_hora":14, "dia": "lunes", "cambio":False}
 sensor_limite = 70
 servo = Servo(9)
+
+buzzer = Led(7, 'buzzer')
+sensorh1 = Adc(0)
+
+verde = Led(13, 'verde')
+rojo = Led(12, 'rojo')
+amarillo = Led(11, 'amarillo')
 
 cont1_nombre = 'Aaspirina'
 cont1_secciones = {
@@ -17,6 +24,18 @@ cont1_secciones = {
             'secc6': {'dia': 'lunes', 'hora': 19, 'minuto': 6},
             }
 
+
+def hilo_sensor(sensorh, buzzer):
+    while True:
+        luz = sensorh.leer()
+        if luz <= sensor_limite: # ajustar
+            buzzer.encender()
+        else:
+            buzzer.apagar()
+            
+        print(sensorh.leer())
+        time.sleep(0.8)
+    
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
@@ -149,10 +168,6 @@ def leds_post():
     redirect('/leds')
 
 
-verde = Led(13, 'verde')
-rojo = Led(12, 'rojo')
-amarillo = Led(11, 'amarillo')
-
 def hilo_led(led):
     global datos_leds
     llave_seg = led.nombre + '_seg'
@@ -200,17 +215,21 @@ if __name__ == '__main__':
         tr.start()
         ta = threading.Thread(target=hilo_fecha, args=(amarillo, ), daemon=True)
         ta.start()
+        tsensor = threading.Thread(target=hilo_sensor, args=(sensorh1, buzzer), daemon=True)
+        tsensor.start()
     else:
-        tv = threading.Thread(target=hilo_led, args=(verde, ), daemon=True)
+        tv = threading.Thread(target=hilo_led, args=(verde, ))
         tv.setDaemon(True)
         tv.start()
-        tr = threading.Thread(target=hilo_led, args=(rojo, ), daemon=True)
-        tv.setDaemon(True)
+        tr = threading.Thread(target=hilo_led, args=(rojo, ))
+        tr.setDaemon(True)
         tr.start()
-        ta = threading.Thread(target=hilo_fecha, args=(amarillo, ), daemon=True)
-        tv.setDaemon(True)
+        ta = threading.Thread(target=hilo_fecha, args=(amarillo, ))
+        ta.setDaemon(True)
         ta.start()
-        
+        tsensor = threading.Thread(target=hilo_sensor, args=(sensorh1, buzzer))
+        tsensor.setDaemon(True)
+        tsensor.start()        
     # python 2.7
     # t = threading.Thread(name='hilo_fecha', target=hilo)
     # t.setDaemon(True)

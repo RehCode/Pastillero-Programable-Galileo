@@ -20,7 +20,7 @@ class Servo():
 
 
 class Led():
-    def __init__(self, pin, nombre):
+    def __init__(self, pin, nombre='led'):
         self.gpio = mraa.Gpio(pin)
         self.gpio.dir(mraa.DIR_OUT)
         self.on = False
@@ -47,6 +47,7 @@ class Adc(object):
 
     def leer(self):
         return self.aio.read()
+
 
 class Boton(object):
     """Clase para crear un boton con pin pullup"""

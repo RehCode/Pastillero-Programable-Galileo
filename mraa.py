@@ -22,6 +22,9 @@ class Gpio(object):
 
     def mode(self, mode):
         pass
+    
+    def read(self):
+        return 1
 
 
 class Pwm(object):
@@ -46,4 +49,4 @@ class Aio(object):
         self.pin = pin
 
     def read(self):
-        pass
+        return 1

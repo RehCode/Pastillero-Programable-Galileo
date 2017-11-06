@@ -6,12 +6,12 @@
 import mraa
 import time
  
-buzzer = mraa.Gpio(3)
+buzzer = mraa.Gpio(7)
 buzzer.dir(mraa.DIR_OUT)
 
 adc = mraa.Aio(0)
 
-boton = mraa.Gpio(4)
+boton = mraa.Gpio(6)
 boton.dir(mraa.DIR_IN)
 boton.mode(mraa.MODE_PULLUP)
 

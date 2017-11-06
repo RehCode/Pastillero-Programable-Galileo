@@ -46,15 +46,19 @@ class Contenedor():
         else:
             angulo = self.angulos[self.seccion]
             self.girar(angulo)
+            return True
 
     def reset(self):
         self.seccion = 0
+        self.girar(self.angulos[self.seccion])
 
 cont1 = Contenedor(9, nombre='cont1', secciones=6)
 resets = 0
 while resets < 4:
     movio = cont1.siguiente()
-    time.sleep(2)
+    print(movio)
     if not movio:
         cont1.reset()
         resets += 1
+        print(reset)
+    time.sleep(2)

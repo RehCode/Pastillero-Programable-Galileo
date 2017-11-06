@@ -6,7 +6,7 @@ import mraa
 import time
 
 adc = mraa.Aio(0)
-boton = mraa.Gpio(4)
+boton = mraa.Gpio(6)
 boton.dir(mraa.DIR_IN)
 boton.mode(mraa.MODE_PULLUP)
 
