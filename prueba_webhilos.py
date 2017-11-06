@@ -19,6 +19,7 @@ def server_static(filepath):
 def raiz():
     return template('views/home.tpl', fecha=datetime.now().ctime())
 
+# --- comentarios
 @route('/comentarios_vista')
 def ver_comentarios():
     return template('comentarios_vista.tpl')
@@ -36,7 +37,7 @@ def ingresar_comentarios():
     return template('comentarios_ingreso.tpl')
 
 # --- contenedor 1
-datos_cont = {'cont1_dia': 'martes', 'cont1_hora': 14, 'cont1_min': 13}
+datos_cont = {'cont1_dia': 'martes', 'cont1_hora': 22, 'cont1_min': 30}
 @route('/cont1')
 def cont1():
     return template('cont1.tpl', **datos_cont)
@@ -46,11 +47,24 @@ def cont1_prog():
     return template('cont1.tpl', **datos_cont)
 
 
+# --- sensor 1
+@route('/sensor1')
+def sensor():
+    return template('views/sensor1.tpl', **datos_sensor)
+
+@route('/sensor1', method='POST')
+def sensor_set():
+    global datos_sensor
+    sensorLimite = int(request.forms.get('limiteLuz'))
+    datos_sensor['sensor_limite'] = sensorLimite
+    return template('views/sensor1.tpl', **datos_sensor)
+
+
 @route('/fecha')
 def fecha():
     return datetime.now().ctime()
 
-
+# --- login
 @route('/login')
 def forma():
     return template('views/login.tpl', ok_login=True)
@@ -117,16 +131,6 @@ def leds_post():
 
     redirect('/leds')
 
-@route('/sensor')
-def sensor():
-    return template('views/sensor.tpl', **datos_sensor)
-
-@route('/sensor', method='POST')
-def sensor_set():
-    global datos_sensor
-    sensorLimite = int(request.forms.get('limiteLuz'))
-    datos_sensor['sensor_limite'] = sensorLimite
-    return template('views/sensor.tpl', **datos_sensor)
 
 verde = Led(13, 'verde')
 rojo = Led(12, 'rojo')
