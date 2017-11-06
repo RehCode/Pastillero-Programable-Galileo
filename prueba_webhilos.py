@@ -1,26 +1,22 @@
-import threading, time, logging
+import threading, time
 from datetime import datetime
 from bottle import route, run, template, request, redirect, static_file
 from galileo import Led, Servo
 
-logging.basicConfig(level=logging.DEBUG)
-logging.debug("A debug message!")
-
 datos_leds = {"rojo_seg": 13, "verde_seg": 17, "amarillo_min":22, "amarillo_hora":14, "dia": "lunes", "cambio":False}
-datos_sensor = {'sensor_limite': 70}
+sensor_limite = 70
 servo = Servo(9)
 
 cont1_nombre = 'Aaspirina'
 cont1_secciones = {
-            'secc1': {'dia': 'lunes', 'hora': 14, 'minuto': 00},
-            'secc2': {'dia': 'lunes', 'hora': 14, 'minuto': 00},
-            'secc3': {'dia': 'lunes', 'hora': 14, 'minuto': 00},
-            'secc4': {'dia': 'lunes', 'hora': 14, 'minuto': 00},
-            'secc5': {'dia': 'lunes', 'hora': 14, 'minuto': 00},
-            'secc6': {'dia': 'lunes', 'hora': 14, 'minuto': 00},
+            'secc1': {'dia': 'lunes', 'hora': 14, 'minuto': 1},
+            'secc2': {'dia': 'lunes', 'hora': 15, 'minuto': 2},
+            'secc3': {'dia': 'lunes', 'hora': 16, 'minuto': 3},
+            'secc4': {'dia': 'lunes', 'hora': 17, 'minuto': 4},
+            'secc5': {'dia': 'lunes', 'hora': 18, 'minuto': 5},
+            'secc6': {'dia': 'lunes', 'hora': 19, 'minuto': 6},
             }
 
-datos_cont = {'cont1_dia': 'martes', 'cont1_hora': 22, 'cont1_min': 30}
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
@@ -71,14 +67,15 @@ def cont1_prog():
 # --- sensor 1
 @route('/sensor1')
 def sensor():
-    return template('views/sensor1.tpl', **datos_sensor)
+    return template('views/sensor1.tpl', sensor_limite=sensor_limite)
 
 @route('/sensor1', method='POST')
 def sensor_set():
-    global datos_sensor
+    global sensor_limite
     sensorLimite = int(request.forms.get('limiteLuz'))
-    datos_sensor['sensor_limite'] = sensorLimite
-    return template('views/sensor1.tpl', **datos_sensor)
+    if sensorLimite != sensor_limite:
+        sensor_limite = sensorLimite
+    return template('views/sensor1.tpl', sensor_limite=sensor_limite)
 
 
 @route('/fecha')
@@ -116,7 +113,6 @@ def angulos():
 @route('/angulos', method='POST')
 def angulos_post():
     angulo = int(request.forms.get('angulo'))
-    logging.debug(angulo)
     servo.girar(angulo)
     return template('views/angulos.tpl', angulo=angulo)
 
