@@ -50,7 +50,7 @@ class Adc(object):
 
 class Boton(object):
     """Clase para crear un boton con pin pullup"""
-    def __init__(self, pin, nombre='boton1')
+    def __init__(self, pin, nombre='boton1'):
         self.gpio = mraa.Gpio(pin)
         self.gpio.dir(mraa.DIR_IN)
         self.gpio.mode(mraa.MODE_PULLUP)
