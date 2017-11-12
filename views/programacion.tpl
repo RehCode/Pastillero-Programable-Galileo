@@ -14,3 +14,4 @@
     <li>Sensor #4</li>
 </ul>
 <h2><a href="/comentarios_vista">Ver comentarios</a></h2>
+<h2><a href="/estadisticas">Ver estadisticas</a></h2>

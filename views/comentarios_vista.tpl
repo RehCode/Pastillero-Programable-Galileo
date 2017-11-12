@@ -14,7 +14,8 @@
 </p>
 
 <h2>Por contenedor</h2>
-<h3>Contenedor #1</h3>
+<h3>Contenedor #1: Aspirina</h3>
+
 <p>
     <b>9/11/2017 14:23hrs</b>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et tellus ac ipsum congue ultrices eu id nisl. Proin vel tortor et dui dapibus blandit eget eu ante. 
@@ -22,4 +23,17 @@
 <p>
     <b>9/11/2017 14:23hrs</b>
     Nam scelerisque congue eros, ac tempus nulla porta sit amet. Mauris eu nibh metus. Integer purus ipsum, elementum et congue. 
+</p>
+<h3>Contenedor #2: Tratamiento espalda</h3>
+<p>
+    <b>9/11/2017 14:23hrs</b>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et tellus ac ipsum congue ultrices eu id nisl. Proin vel tortor et dui dapibus blandit eget eu ante. 
+</p>
+<p>
+    <b>9/11/2017 14:23hrs</b>
+    Nam scelerisque congue eros, ac tempus nulla porta sit amet. Mauris eu nibh metus. Integer purus ipsum, elementum et congue. 
+</p>
+<h3>Contenedor #3: Vitaminas</h3>
+<p>
+    Sin comentarios
 </p>

@@ -11,7 +11,7 @@
     </tr>
 <%
 import random
-medicina = ['Aspirina', 'Vitamina B']
+medicina = ['Aspirina', 'Vitaminas']
 %>
 % for i in range(1, 7):
         <tr>
@@ -19,5 +19,5 @@ medicina = ['Aspirina', 'Vitamina B']
             <td>{{random.choice(medicina)}}</td>
             <td>{{random.randint(0, 6)}} de 6</td>
         </tr>
-        % end
+% end
 </table>

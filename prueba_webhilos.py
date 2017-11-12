@@ -63,6 +63,11 @@ def ingresar_comentarios():
 def ingresar_comentarios():
     return template('comentarios_ingreso.tpl')
 
+# --- estadisticas
+@route('/estadisticas')
+def estadistica():
+    return template('estadisticas.tpl')
+
 # --- contenedor 1
 @route('/cont1')
 def cont1():
