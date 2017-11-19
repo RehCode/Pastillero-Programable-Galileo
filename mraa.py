@@ -18,7 +18,11 @@ class Gpio(object):
         pass
 
     def write(self, value):
-        pass
+        if value == 1:
+            print('{} ON'.format(self.pin))
+        
+        if value == 0:
+            print('{} OFF'.format(self.pin))
 
     def mode(self, mode):
         pass
@@ -49,4 +53,6 @@ class Aio(object):
         self.pin = pin
 
     def read(self):
-        return 1
+        with open('valor_sensor.txt') as archivo:
+            valor = int(archivo.readline())
+            return valor
