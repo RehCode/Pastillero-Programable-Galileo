@@ -1,0 +1,11 @@
+Sensor y buzz
+    Prender una luz amarilla cuando se encuentra una pastilla sobre el Sensor
+    Si la pastilla no es removida en menos de un tiempo determinado se activara un buzzer
+    Al retirar la pastilla, esta se registrara como tomada
+
+
+Vueltas servo
+    El servo girara 20 grados cuando llege el tiempo previamente indicado
+    Se registra que seccion esta por dispensar para evitar sobrepaso de giros
+    un boton regresara el servo a su posicion original
+    Una luz roja indicara que se terminaron las pastillas
