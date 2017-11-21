@@ -12,7 +12,7 @@ sensorh1 = Adc(0)
 
 amarillo = Led(12, 'amarillo')
 
-cont1_nombre = 'Aaspirina'
+cont1_nombre = 'Aspirina'
 cont1_secciones = {
             'secc1': {'dia': 'lunes', 'hora': 14, 'minuto': 1},
             'secc2': {'dia': 'lunes', 'hora': 15, 'minuto': 2},
