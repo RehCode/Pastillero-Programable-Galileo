@@ -5,6 +5,7 @@
 import mraa
 import time
 import random
+import sys
 
 class Contenedor():
     MAXIMO = 0.14
@@ -60,7 +61,16 @@ class Contenedor():
 led = mraa.Gpio(13)
 led.dir(mraa.DIR_OUT)
 
-cont1 = Contenedor(9, nombre='cont1', secciones=6)
+secciones = 6
+if len(sys.argv) >= 2:
+    try:
+        secciones = int(sys.argv[1])
+        if secciones not in [6, 4, 3]:
+            secciones = 6
+    except ValueError:
+        secciones = 6
+
+cont1 = Contenedor(9, nombre='cont1', secciones=secciones)
 resets = 0
 while resets < 3:
     movio = cont1.siguiente()
