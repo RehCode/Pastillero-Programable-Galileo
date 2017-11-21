@@ -1,5 +1,5 @@
 % rebase('base.tpl', title='Angulos')
-<h1>Angulos servomotor</h1>
+<h1>Prueba Angulos servomotor</h1>
 <form action="/angulos" method="POST">
     % for i in range(0, 190, 30):
         % if angulo == i:

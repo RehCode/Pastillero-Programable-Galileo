@@ -1,5 +1,5 @@
 % rebase('base.tpl', title="Ingreso de comentarios")
-
+<h1>Ingreso de comentarios</h1>
 <form action="/com_trat" method="POST">
     <h2>Tratamiento</h2>
     <textarea name="tratamientocom" id="tratamientocom" cols="30" rows="5"></textarea>

@@ -1,5 +1,5 @@
 % rebase('base.tpl', title='Login')
-<h2>Administrador del sistema</h2>
+<h2>Ingreso del administrador del sistema</h2>
 <form action="/login" method="POST">
     <label for="usaurio">Usuario</label>
     <input type="text" id="usuario" name="usuario">

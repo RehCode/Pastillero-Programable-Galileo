@@ -1,5 +1,5 @@
 % rebase('base.tpl', title="Contenedor #1")
-<h2>Programación</h2>
+<h2>Programación del contendor #1</h2>
 <form action="/cont1" method="POST">
     <label for="nombre">Descripción del contenido</label>
     <input type="text" name="nombre" id="nombre" value='{{cont1_nombre}}' required>

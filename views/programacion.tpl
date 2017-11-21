@@ -1,4 +1,5 @@
 % rebase('base.tpl', title='Pagina de administrador')
+<h1>Pagina del administrador</h1>
 <h2>Programación de los contenedores</h2>
 <ul>
     <li><a href="/cont1">Contenedor #1</a></li>

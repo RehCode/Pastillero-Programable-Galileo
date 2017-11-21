@@ -1,5 +1,5 @@
 % rebase('base.tpl', title='Programacion de dispensado')
-<h1>Programación temporal</h1>
+<h1>Programación simulada usando led</h1>
 <form action="/leds" method="POST">
     <p>
         <label>Amarillo</label>

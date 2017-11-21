@@ -1,4 +1,5 @@
 % rebase('base.tpl', title="Comentarios")
+<h1>Revision de comentarios</h1>
 <h2>Tratamiento</h2>
 <p>
     <b>9/11/2017 14:23hrs</b>
