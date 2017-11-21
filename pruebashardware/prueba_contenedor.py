@@ -57,6 +57,9 @@ class Contenedor():
         mensaje = "Seccion %d de %d" % (self.seccion, self.numero_secciones)
         return mensaje
 
+led = mraa.Gpio(13)
+led.dir(mraa.DIR_OUT)
+
 cont1 = Contenedor(9, nombre='cont1', secciones=6)
 resets = 0
 while resets < 3:
@@ -65,5 +68,9 @@ while resets < 3:
     if not movio:
         cont1.reset()
         resets += 1
+        led.write(1)
+        print('Contenedor vacio')
         print(resets)
+        time.sleep(3)
+        led.write(0)
     time.sleep(random.randint(2, 4))
