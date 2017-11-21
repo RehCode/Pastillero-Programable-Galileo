@@ -72,7 +72,8 @@ if len(sys.argv) >= 2:
 
 cont1 = Contenedor(9, nombre='cont1', secciones=secciones)
 resets = 0
-while resets < 3:
+resets_maximo = 2
+while resets < resets_maximo:
     movio = cont1.siguiente()
     print(cont1.estado_str())
     if not movio:
