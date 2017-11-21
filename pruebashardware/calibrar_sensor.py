@@ -28,6 +28,7 @@ with open('valor_sensor.txt', 'w') as archivo:
     archivo.write(str(valor_con_pastilla))
 
 # salida
+time.sleep(1)
 led.write(1)
 time.sleep(1)
 led.write(0)
