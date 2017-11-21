@@ -7,10 +7,10 @@ datos_leds = {"amarillo_min":22, "amarillo_hora":14, "dia": "lunes", "cambio":Fa
 sensor_limite = 70
 servo = Servo(9)
 
-buzzer = Led(7, 'buzzer')
+buzzer = Led(11, 'buzzer')
 sensorh1 = Adc(0)
 
-amarillo = Led(11, 'amarillo')
+amarillo = Led(12, 'amarillo')
 
 cont1_nombre = 'Aaspirina'
 cont1_secciones = {
