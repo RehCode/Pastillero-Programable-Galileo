@@ -4,6 +4,7 @@
 """
 import mraa
 import time
+import random
 
 class Contenedor():
     MAXIMO = 0.14
@@ -52,13 +53,17 @@ class Contenedor():
         self.seccion = 0
         self.girar(self.angulos[self.seccion])
 
+    def estado_str(self):
+        mensaje = "Seccion %d de %d" % (self.seccion, self.numero_secciones)
+        return mensaje
+
 cont1 = Contenedor(9, nombre='cont1', secciones=6)
 resets = 0
-while resets < 4:
+while resets < 3:
     movio = cont1.siguiente()
-    print(movio)
+    print(cont1.estado_str())
     if not movio:
         cont1.reset()
         resets += 1
-        print(reset)
-    time.sleep(2)
+        print(resets)
+    time.sleep(random.randint(2, 4))

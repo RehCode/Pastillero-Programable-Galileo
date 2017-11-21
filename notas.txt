@@ -4,3 +4,20 @@ porcentajes angulos
 
 formula
 y = ((angulo/18)+4)/100
+
+ Formula
+ http://www.toptechboy.com/raspberry-pi/raspberry-pi-lesson-28-controlling-a-servo-on-raspberry-pi-with-python/
+ Remember slope of a line will be:
+    m=(y2-y1)/(x2-x1)=(12-2)/180-0)=10/180 = 1/18
+
+    We can now get the equation of the line using the point slope formula.
+
+    y-y1=m(x-x1)
+
+    y-2=1/18*(x-0)
+
+    y = 1/18*x + 2
+
+    Putting in our actual variables, we get
+
+    DutyCycle = 1/18* (DesiredAngle) + 2

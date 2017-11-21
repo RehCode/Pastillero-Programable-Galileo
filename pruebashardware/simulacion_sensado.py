@@ -7,10 +7,10 @@ Contar las veces que se retira la pastilla del sensor
 import mraa
 import time
 
-buzzer = mraa.Gpio(7)
+buzzer = mraa.Gpio(12)
 buzzer.dir(mraa.DIR_OUT)
 
-led = mraa.Gpio(6)
+led = mraa.Gpio(13)
 led.dir(mraa.DIR_OUT)
 
 sensor = mraa.Aio(0)
@@ -30,9 +30,9 @@ print('valor_con_pastilla: ', valor_con_pastilla)
 
 while True:
     sensado = sensor.read()
-
+    
     if sensado <= valor_con_pastilla: # ajustar
-        led.write(1)
+        
         # tomar tiempo
         if not tiempo:
             inicio = time.time()
@@ -42,7 +42,7 @@ while True:
             print('Tiempo trasncurrido: ', transcurrido)
             if transcurrido >= limite_sec_pastilla:
                 dispensado = True
-
+                
             if transcurrido >= limite_sec_buzzer:
                 buzzer.write(1)
     else:
@@ -54,6 +54,7 @@ while True:
         dispensado = False
 
     if dispensado:
+        led.write(1)
         print('Dispensado')
 
     print(sensor.read())
