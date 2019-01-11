@@ -21,3 +21,25 @@ y = ((angulo/18)+4)/100
     Putting in our actual variables, we get
 
     DutyCycle = 1/18* (DesiredAngle) + 2
+
+Galileo
+tcpsvd 0 ftp ftpd -w &
+
+enp0s20f6:avahi Link encap:Ethernet  HWaddr 98:4F:EE:05:46:39
+          inet addr:169.254.5.112  Bcast:169.254.255.255  Mask:255.255.0.0
+
+
+192.168.1.76
+192.168.1.72
+mask
+255.255.255.0
+
+escritorio
+192.168.1.70
+
+gateway
+192.168.1.254
+
+root@galileo:~# /sbin/ifconfig -a
+enp0s20f6 Link encap:Ethernet  HWaddr 98:4F:EE:05:46:39
+          inet addr:192.168.1.76  Bcast:192.168.1.255  Mask:255.255.255.0
