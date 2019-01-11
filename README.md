@@ -1,8 +1,10 @@
 # Pastillero programable
-Dispensador de pastillas programable por web utilizando Interl Galileo
+Dispensador de pastillas programable por web utilizando Intel Galileo.
 
 ## Objetivo
-Proyecto final de la materia proyectos profesionales
+Sistema de internet de las cosas.
+Proyecto final de la materia proyectos profesionales.
+
 
 ## Stack
 - Intel Galileo
